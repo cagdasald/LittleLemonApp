@@ -3,16 +3,33 @@ import { StyleSheet, Text, View } from "react-native";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import PriceList from "./components/PriceList";
+import { useState } from "react";
+import PriceSectionList from "./components/PriceSectionList";
 
 export default function App() {
+  const [page, setPage] = useState<string>("PriceList");
+
+  let screen = (
+    <View style={styles.list}>
+      <PriceList sectionListBtn={() => setPage("SectionList")} />
+    </View>
+  );
+
+  if (page === "SectionList") {
+    screen = (
+      <View style={styles.list}>
+        <PriceSectionList priceListBtn={() => setPage("PriceList")}/>
+      </View>
+    );
+  }
+
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Header />
       </View>
-      <View style={styles.list}>
-        <PriceList/>
-      </View>
+      {screen}
       <View style={styles.footer}>
         <Footer />
       </View>
@@ -25,7 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#495E57",
   },
-  header:{
+  header: {
     width: "100%",
   },
   list: {
@@ -33,5 +50,5 @@ const styles = StyleSheet.create({
   },
   footer: {
     width: "100%",
-  }
+  },
 });
