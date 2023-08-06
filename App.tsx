@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
   },
   list: {
     flex: 1,
+    paddingBottom: 95,
   },
   footer: {
     width: "100%",
