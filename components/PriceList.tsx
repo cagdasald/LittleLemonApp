@@ -1,9 +1,5 @@
-import { Button, FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import React from "react";
-
-interface IProps {
-  sectionListBtn: () => void;
-}
 
 const menuItemsToDisplay = [
   { name: "Hummus", price: "$5.00", id: "1A" },
@@ -50,11 +46,9 @@ const Seperator = () => {
   );
 }
 
-const PriceList = (props: IProps) => {
+const PriceList = () => {
   return (
     <View style={styles.listContainer}>
-    <Text style={styles.menuText}>Menu</Text>
-    <Button title="Section List" onPress={props.sectionListBtn} /> 
       <FlatList
         data={menuItemsToDisplay}
         renderItem={(itemData) => (
@@ -71,10 +65,10 @@ export default PriceList;
 
 const styles = StyleSheet.create({
   listContainer: {
-    padding: 20,
+    flex: 1,
   },
   menuText: {
-    color: "#fff",
+    color: "#000",
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",

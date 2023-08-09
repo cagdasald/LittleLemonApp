@@ -18,6 +18,6 @@ const styles = StyleSheet.create({
     },
     footerText: {
         textAlign: 'center',
-        padding: 20,
+        padding: 10,
     }
 })
